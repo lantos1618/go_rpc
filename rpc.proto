@@ -1,0 +1,40 @@
+syntax = "proto3";
+service v1 {
+  rpc MyFunc(MyFuncRequest) returns (MyFuncResponse);
+  rpc SimpleFunc(SimpleFuncRequest) returns (SimpleFuncResponse);
+  rpc CompoundFunc(CompoundFuncRequest) returns (CompoundFuncResponse);
+}
+// this is auto genorated for go's error struct
+message Error {
+  string Message = 1;
+}
+message MyFuncRequest {
+  string arg1 = 1;
+  int32 arg2 = 2;
+}
+message MyFuncResponse {
+  string arg1 = 1;
+  Error arg2 = 2;
+}
+message SimpleStruct {
+  string Name = 1;
+  int32 Age = 2;
+}
+message SimpleFuncRequest {
+  SimpleStruct arg1 = 1;
+}
+message SimpleFuncResponse {
+  string arg1 = 1;
+  Error arg2 = 2;
+}
+message CompoundStruct {
+  SimpleStruct Person = 1;
+  repeated string Phones = 2;
+}
+message CompoundFuncRequest {
+  CompoundStruct arg1 = 1;
+}
+message CompoundFuncResponse {
+  string arg1 = 1;
+  Error arg2 = 2;
+}
