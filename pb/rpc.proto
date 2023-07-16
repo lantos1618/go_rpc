@@ -1,0 +1,19 @@
+syntax = "proto3";
+service v1 {
+  rpc SimpleFunc(SimpleFuncRequest) returns (SimpleFuncResponse);
+}
+// this is auto genorated for go's error struct
+message Error {
+  string Message = 1;
+}
+message SimpleStruct {
+  string Name = 1;
+  int32 Age = 2;
+}
+message SimpleFuncRequest {
+  SimpleStruct arg1 = 1;
+}
+message SimpleFuncResponse {
+  string arg1 = 1;
+  Error arg2 = 2;
+}
